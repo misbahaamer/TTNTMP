@@ -6,11 +6,9 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.Web;
 
-
-namespace TTNtmp.Models
+namespace TTNtmp.Controllers.Resources
 {
-    [TableAttribute("Employees")]
-    public class Employee
+    public class EmployeeResource
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -50,11 +48,5 @@ namespace TTNtmp.Models
         [StringLength(255)]  
          [DatabaseGenerated(DatabaseGeneratedOption.None)]      
         public string Status { get; set; }
-
-        
-
-        
-
-        
     }
 }

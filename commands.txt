@@ -1,0 +1,9 @@
+Employee = make
+PersonalInfo = model
+
+update database = dotnet ef database update
+downgrade database = dotnet ef database update 0
+remove migration = dotnet ef migrations remove
+add migration = dotnet ef migrations add yourmigrationvalue
+
+

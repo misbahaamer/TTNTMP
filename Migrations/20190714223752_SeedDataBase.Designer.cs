@@ -9,8 +9,8 @@ using TTNtmp.Persistence;
 namespace TTNtmp.Migrations
 {
     [DbContext(typeof(TTNtmpDbContext))]
-    [Migration("20190713034545_InitialModel")]
-    partial class InitialModel
+    [Migration("20190714223752_SeedDataBase")]
+    partial class SeedDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,36 +26,26 @@ namespace TTNtmp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("LastName")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("MarketingEmail");
+
+                    b.Property<int>("MarketingPhone");
+
+                    b.Property<string>("PersonalEmail");
+
+                    b.Property<int>("PersonalPhone");
+
+                    b.Property<string>("Status")
+                        .HasMaxLength(255);
 
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
-                });
-
-            modelBuilder.Entity("TTNtmp.Models.PersonalInfo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("EmployeeId");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("PersonalInfo");
-                });
-
-            modelBuilder.Entity("TTNtmp.Models.PersonalInfo", b =>
-                {
-                    b.HasOne("TTNtmp.Models.Employee", "Employee")
-                        .WithMany("EmployeeInfo")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
