@@ -1,0 +1,13 @@
+.full-width-table {
+  width: 100%;
+  margin: 20px auto;
+}
+.mat-elevation-z8{
+  margin: 30px auto;
+}
+
+.mat-form-field{
+  margin: 10px 50px -35px 0px;
+  width: 50%;
+}
+
