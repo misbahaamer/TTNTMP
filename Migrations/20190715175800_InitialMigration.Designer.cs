@@ -9,8 +9,8 @@ using TTNtmp.Persistence;
 namespace TTNtmp.Migrations
 {
     [DbContext(typeof(TTNtmpDbContext))]
-    [Migration("20190714223752_SeedDataBase")]
-    partial class SeedDataBase
+    [Migration("20190715175800_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

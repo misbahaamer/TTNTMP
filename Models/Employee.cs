@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.Web;
+using System;
+using TTNtmp.Models;
 
 
 namespace TTNtmp.Models
@@ -16,45 +18,50 @@ namespace TTNtmp.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        //[Required(ErrorMessage = "First Name is required.")]
+        [Required(ErrorMessage = "First Name is required.")]
         [StringLength(255)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string FirstName { get; set; }
 
-        //[Required(ErrorMessage = "Last Name is required.")]
+        [Required(ErrorMessage = "Last Name is required.")]
         [StringLength(255)]
          [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string LastName { get; set; }
 
-        //[Required(ErrorMessage = "Personal Phone is required.")]
-        //[Range(1,10, ErrorMessage = "10 digits required")]
+        [Required(ErrorMessage = "Personal Phone is required.")]
+        [Range(1,10, ErrorMessage = "10 digits required")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PersonalPhone { get; set; }
 
-        //[Required(ErrorMessage = "Marketing Phone is required.")]
-        //[Range(1,10, ErrorMessage = "10 digits required")]
+        [Required(ErrorMessage = "Marketing Phone is required.")]
+        [Range(1,10, ErrorMessage = "10 digits required")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int MarketingPhone { get; set; }
 
-        //[Required(ErrorMessage = "Personal Email is required.")]
+        [Required(ErrorMessage = "Personal Email is required.")]
         [EmailAddress]
          [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string PersonalEmail { get; set; }
 
-       // [Required(ErrorMessage = "Marketing Email is required.")]
+       [Required(ErrorMessage = "Marketing Email is required.")]
         [EmailAddress]
          [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string MarketingEmail { get; set; }
 
         //[Required(ErrorMessage = "Status is required.")]
         [StringLength(255)]  
-         [DatabaseGenerated(DatabaseGeneratedOption.None)]      
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]      
         public string Status { get; set; }
 
-        
+        public DateTime DOB { get; set; }
 
-        
+        public virtual EmployeeCard EmployeeCard { get; set; }
+        public virtual Vendors HomeVendors { get; set; }
 
-        
+
+
+
+
+
     }
 }

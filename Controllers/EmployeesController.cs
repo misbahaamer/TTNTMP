@@ -11,18 +11,18 @@ using TTNtmp.Controllers.Resources;
 
 namespace TTNtmp.Controllers {
     public class EmployeesController : Controller {
-        private readonly TTNtmpDbContext context;
-        private readonly IMapper mapper;
-        public EmployeesController (TTNtmpDbContext context, IMapper mapper) {
-            this.mapper = mapper;
-            this.context = context;
+        //private readonly TTNtmpDbContext context;
+        //private readonly IMapper mapper;
+        //public EmployeesController (TTNtmpDbContext context, IMapper mapper) {
+        //    this.mapper = mapper;
+        //    this.context = context;
 
-        }
+        //}
 
-        [HttpGet ("/apt/Employees")]
-        public async Task<DbSet<EmployeeResource>> GetEmployeesAsync () {
-            var employees =   context.Employees;
-            return mapper.Map<List<Employee>, List<EmployeeResource>>(employees);
-        }
+        //[HttpGet ("/apt/Employees")]
+        //public async Task<DbSet<EmployeeResource>> GetEmployeesAsync () {
+        //    var employees =   context.Employees;
+        //    return mapper.Map<List<Employee>, List<EmployeeResource>>(employees);
+        //}
     }
 }

@@ -8,6 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using TTNtmp.Persistence;
 using AutoMapper;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using TTNtmp.Controllers;
 
 namespace TTNtmp
 {
@@ -24,8 +27,11 @@ namespace TTNtmp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper();
+            services.AddSingleton(Configuration);
+            services.AddScoped<IVendorPosition, VendorPositionService>();
             services.AddDbContext<TTNtmpDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -53,7 +59,7 @@ namespace TTNtmp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
+ 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

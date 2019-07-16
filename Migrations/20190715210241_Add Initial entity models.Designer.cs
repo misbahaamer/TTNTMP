@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TTNtmp.Persistence;
 
 namespace TTNtmp.Migrations
 {
     [DbContext(typeof(TTNtmpDbContext))]
-    partial class TTNtmpDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190715210241_Add Initial entity models")]
+    partial class AddInitialentitymodels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
