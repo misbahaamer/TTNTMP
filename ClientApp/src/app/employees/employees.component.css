@@ -4,6 +4,62 @@
 }
 .mat-elevation-z8{
   margin: 30px auto;
+  overflow-x: scroll;
+}
+
+th.mat-column-firstname, td.mat-column-firstname {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+th.mat-column-lastname, td.mat-column-lastname {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+th.mat-column-id, td.mat-column-id {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+th.mat-column-select, td.mat-column-select {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+th.mat-column-personalPhoneNumber, td.mat-column-personalPhoneNumber {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+th.mat-column-marketingPhoneNumber, td.mat-column-marketingPhoneNumber {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+th.mat-column-personalEmail, td.mat-column-personalEmail {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+th.mat-column-marketingEmail, td.mat-column-marketingEmail {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+th.mat-column-dateofBirth, td.mat-column-dateofBirth {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+th.mat-column-status, td.mat-column-status {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+th.mat-column-actions, td.mat-column-actions {
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .mat-form-field{

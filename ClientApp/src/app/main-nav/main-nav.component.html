@@ -9,6 +9,7 @@
       <a mat-list-item [routerLinkActive]='["link-active"]' [routerLink]='["/counter"]'>Counter</a>
       <a mat-list-item [routerLinkActive]='["link-active"]' [routerLink]='["/fetch-data"]'>Fetch data</a>
       <a mat-list-item [routerLinkActive]='["link-active"]' [routerLink]='["/employees"]'>Employees</a>
+      <a mat-list-item [routerLinkActive]='["link-active"]' [routerLink]='["/submissions"]'>Consultants Submission</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -21,7 +22,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>TTNtmp</span>
+      <span>TTN Management</span>
     </mat-toolbar>
     <div class="container">
         <router-outlet></router-outlet>

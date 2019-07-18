@@ -10,14 +10,16 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-// tslint:disable-next-line: max-line-length
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule,
    MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule,
-   MatInputModule, MatDialogModule } from '@angular/material';
+   MatInputModule, MatDialogModule, MatAutocompleteModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeesComponent } from './employees/employees.component';
 import { AddEmployeesComponent } from './employees/addemployees.component';
 import { EmployeeService } from './employees/employees.service';
+import { SubmissionsComponent } from './submissions/submissions.component';
+import { AddSubmissionsComponent } from './submissions/addsubmissions.component';
+import { SubmissionService } from './submissions/submissions.service';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { EmployeeService } from './employees/employees.service';
     MainNavComponent,
     EmployeesComponent,
     AddEmployeesComponent,
-
+    SubmissionsComponent,
+    AddSubmissionsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -40,6 +43,7 @@ import { EmployeeService } from './employees/employees.service';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'employees', component: EmployeesComponent},
+      { path: 'submissions', component: SubmissionsComponent},
     ]),
     LayoutModule,
     MatToolbarModule,
@@ -55,10 +59,11 @@ import { EmployeeService } from './employees/employees.service';
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
+    MatAutocompleteModule,
     ReactiveFormsModule
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, SubmissionService],
   bootstrap: [AppComponent],
-  entryComponents: [AddEmployeesComponent]
+  entryComponents: [AddEmployeesComponent, AddSubmissionsComponent]
 })
 export class AppModule { }

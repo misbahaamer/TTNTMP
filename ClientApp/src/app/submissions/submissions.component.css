@@ -1,0 +1,120 @@
+.full-width-table {
+    width: 100%;
+    margin: 30px auto;
+  }
+  .mat-elevation-z8{
+    margin: 40px auto;
+    overflow-x: scroll;
+  }
+  
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+  th.mat-column-rep, td.mat-column-rep {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-vendor, td.mat-column-vendor {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-id, td.mat-column-id {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-select, td.mat-column-select {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-primeVendor, td.mat-column-primeVendor {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-client, td.mat-column-client {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-implementationPartnerVendor, td.mat-column-implementationPartnerVendor {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-vendorPerson, td.mat-column-vendorPerson {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-vendorContact, td.mat-column-vendorContact {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-status, td.mat-column-status {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-actions, td.mat-column-actions {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  th.mat-column-primeVendorPerson, td.mat-column-primeVendorPerson {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-primeVendorContact, td.mat-column-primeVendorContact {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-firstCommunication, td.mat-column-firstCommunication {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  th.mat-column-role, td.mat-column-role {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-domain, td.mat-column-domain {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-toolStack, td.mat-column-toolStack {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  
+  th.mat-column-submissionAndProcess, td.mat-column-submissionAndProcess {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  th.mat-column-reasonOnDecision, td.mat-column-reasonOnDecision {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  th.mat-column-updates, td.mat-column-updates {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .mat-form-field{
+    margin: 10px 50px -35px 0px;
+    width: 50%;
+  }
+  
+  

@@ -1,38 +1,40 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTable, MatTableDataSource, MatDialog, MatDialogConfig } from '@angular/material';
-import { EXAMPLE_DATA, EmployeesItem } from './employees-datasource';
+import { EXAMPLE_DATA, SubmissionsItem } from './submissions-datasource';
 import { SelectionModel } from '@angular/cdk/collections';
-import { AddEmployeesComponent } from './addemployees.component';
-import { EmployeeService } from './employees.service';
+import { AddSubmissionsComponent } from './addsubmissions.component';
+import { SubmissionService } from './submissions.service';
 
 @Component({
-  selector: 'app-employees',
-  templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.css']
+  selector: 'app-submissions',
+  templateUrl: './submissions.component.html',
+  styleUrls: ['./submissions.component.css']
 })
 
-export class EmployeesComponent implements AfterViewInit {
+export class SubmissionsComponent implements AfterViewInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<EmployeesItem>;
+  @ViewChild(MatTable, {static: false}) table: MatTable<SubmissionsItem>;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['select', 'id', 'firstname', 'lastname', 'personalPhoneNumber',
-  'marketingPhoneNumber', 'personalEmail', 'marketingEmail', 'status', 'dateofBirth', 'actions'];
-  dataSource = new MatTableDataSource<EmployeesItem>(EXAMPLE_DATA);
-  selection = new SelectionModel<EmployeesItem>(true, []);
+  displayedColumns = ['select', 'id', 'rep', 'vendor', 'primeVendor', 'client',
+  'implementationPartnerVendor', 'vendorPerson', 'vendorContact', 'primeVendorPerson', 'primeVendorContact', 'firstCommunication',
+   'role', 'domain', 'toolStack', 'submissionAndProcess', 'status', 'reasonOnDecision',
+  'updates', 'actions'];
+  dataSource = new MatTableDataSource<SubmissionsItem>(EXAMPLE_DATA);
+  selection = new SelectionModel<SubmissionsItem>(true, []);
 
   removeSelectedRows() {
     this.selection.selected.forEach(item => {
        const index: number = this.dataSource.data.findIndex(d => d === item);
        console.log(this.dataSource.data.findIndex(d => d === item));
        this.dataSource.data.splice(index, 1);
-       this.dataSource = new MatTableDataSource<EmployeesItem>(this.dataSource.data);
+       this.dataSource = new MatTableDataSource<SubmissionsItem>(this.dataSource.data);
       setTimeout(() => {
         this.ngAfterViewInit();
       });
      });
-     this.selection = new SelectionModel<EmployeesItem>(true, []);
+     this.selection = new SelectionModel<SubmissionsItem>(true, []);
   }
 
   applyFilter(filterValue: string) {
@@ -53,22 +55,20 @@ export class EmployeesComponent implements AfterViewInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: EmployeesItem): string {
+  checkboxLabel(row?: SubmissionsItem): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
-  constructor(private service: EmployeeService,
+  constructor(private service: SubmissionService,
               public dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogconfig = new MatDialogConfig();
-    dialogconfig.width = '60%';
-    dialogconfig.height = '52%';
     dialogconfig.disableClose = true;
-    const dialogRef = this.dialog.open(AddEmployeesComponent, dialogconfig);
+    const dialogRef = this.dialog.open(AddSubmissionsComponent, dialogconfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(this.service.form.value);
@@ -84,13 +84,11 @@ export class EmployeesComponent implements AfterViewInit {
 
   onEdit(row) {
     this.service.populateForm(row);
-    this.selection = new SelectionModel<EmployeesItem>(true, []);
+    this.selection = new SelectionModel<SubmissionsItem>(true, []);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '60%';
-    dialogConfig.height = '52%';
-    const dialogRef = this.dialog.open(AddEmployeesComponent, dialogConfig);
+    const dialogRef = this.dialog.open(AddSubmissionsComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(this.service.form.value);
@@ -99,15 +97,15 @@ export class EmployeesComponent implements AfterViewInit {
           const index: number = this.dataSource.data.findIndex(d => d === item);
           console.log(this.dataSource.data.findIndex(d => d === item));
           this.dataSource.data.splice(index, 1, this.service.form.value);
-          this.dataSource = new MatTableDataSource<EmployeesItem>(this.dataSource.data);
+          this.dataSource = new MatTableDataSource<SubmissionsItem>(this.dataSource.data);
         });
       this.service.form.reset();
       setTimeout(() => {
         this.ngAfterViewInit();
       });
-      this.selection = new SelectionModel<EmployeesItem>(true, []);
+      this.selection = new SelectionModel<SubmissionsItem>(true, []);
     }
-    this.selection = new SelectionModel<EmployeesItem>(true, []);
+    this.selection = new SelectionModel<SubmissionsItem>(true, []);
     });
   }
 

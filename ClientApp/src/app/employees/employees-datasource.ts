@@ -5,32 +5,25 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface EmployeesItem {
-  name: string;
+  firstname: string;
+  lastname: string;
+  personalPhoneNumber: number;
+  marketingPhoneNumber: number;
+  personalEmail: string;
+  marketingEmail: string;
+  status: string;
+  dateofBirth: string;
   id: number;
 }
 
 // TODO: replace this with real data from your application
 export const EXAMPLE_DATA: EmployeesItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
+  {id: 1, firstname: 'Darab', lastname: 'Kiyani', personalPhoneNumber: 8607710436, marketingPhoneNumber: 86014123131, personalEmail:
+  'darab.kiyani@uconn.edu', marketingEmail: 'darabkiyani5@gmail.com', status: 'OPT', dateofBirth: '09/03/1990'},
+  {id: 2, firstname: 'Misbah', lastname: 'Aamer', personalPhoneNumber: 12311123232, marketingPhoneNumber: 12123121231,
+  personalEmail: 'maad@yahoo.com', marketingEmail: 'misbah@gmail.com', status: 'OPT', dateofBirth: '09/07/1989'},
+  {id: 3, firstname: 'Harris', lastname: 'Masood', personalPhoneNumber: 1231232112, marketingPhoneNumber: 12312312313,
+  personalEmail: 'harad@yahoo.com', marketingEmail: 'harris@gmail.com', status: 'Citizen', dateofBirth: '09/09/1970'},
 ];
 
 /**
@@ -38,7 +31,7 @@ export const EXAMPLE_DATA: EmployeesItem[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class EmployeesDataSource extends DataSource<EmployeesItem> {
+export default class EmployeesDataSource extends DataSource<EmployeesItem> {
   data: EmployeesItem[] = EXAMPLE_DATA;
   paginator: MatPaginator;
   sort: MatSort;
@@ -93,8 +86,13 @@ export class EmployeesDataSource extends DataSource<EmployeesItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
+        case 'firstname': return compare(a.firstname, b.firstname, isAsc);
+        case 'lastname': return compare(a.lastname, b.lastname, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'personalPhoneNumber': return compare(+a.id, +b.id, isAsc);
+        case 'marketingPhoneNumber': return compare(+a.id, +b.id, isAsc);
+        case 'personalEmail': return compare(a.personalEmail, b.personalEmail, isAsc);
+        case 'marketingEmail': return compare(a.marketingEmail, b.marketingEmail, isAsc);
         default: return 0;
       }
     });

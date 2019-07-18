@@ -8,6 +8,7 @@ import { EmployeeService } from './employees.service';
 })
 
 export class AddEmployeesComponent {
+    options: string[] = ['GC EAD', 'OPT', 'OPT STEM', 'Citizen'];
     constructor(
         private service: EmployeeService,
         private dialogRef: MatDialogRef<AddEmployeesComponent>) {}

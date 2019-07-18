@@ -1,0 +1,84 @@
+<h1 style="text-align: center" mat-dialog-title>New Submission </h1>
+<div mat-dialog-content style="margin-left: 5%;" [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+  <mat-form-field style="margin-left: 20px">
+    <input matInput formControlName="id"
+    placeholder="Primary Key">
+  </mat-form-field>
+  <mat-form-field style="margin-left: 20px">
+        <input matInput formControlName="rep"
+        placeholder="Rep">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="vendor"
+  placeholder="Vendor">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="primeVendor"
+  placeholder="Prime Vendor">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="client"
+  placeholder="Client">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="implementationPartnerVendor"
+  placeholder="Implementation Partner Vendor">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="vendorPerson"
+  placeholder="Vendor Person">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="vendorContact"
+  placeholder="Vendor Contact">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="primeVendorPerson"
+  placeholder="PrimeVendor Person">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="primeVendorContact"
+  placeholder="Prime Vendor Contact">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="firstCommunication"
+  placeholder="First Communication">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="role"
+  placeholder="Role">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="domain"
+  placeholder="Domain">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="toolStack"
+  placeholder="Tool Stack">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="submissionAndProcess"
+  placeholder="Prime Vendor Contact">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="status" [matAutocomplete]="auto"
+  placeholder="Status">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of options" [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
+  </mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="reasonsOnDecision"
+  placeholder="Reasons On Decision">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="updates"
+  placeholder="Updates">
+</mat-form-field>
+</div>
+<div class="button-row">
+    <button mat-raised-button style="width: 40%; margin-left: 7%; margin-top: 2%" color="primary" type="submit" (click)="onSubmit()" [disabled]="service.form.invalid">Submit</button>
+    <button mat-raised-button style="width: 40%; margin-left: 5%; margin-top: 2%" color="warn" (click)="onNoClick()">Cancel</button>
+</div>

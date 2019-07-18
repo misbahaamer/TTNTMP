@@ -1,15 +1,48 @@
-<h1 mat-dialog-title>New Employee </h1>
-<div mat-dialog-content [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
-  <mat-form-field>
+<h1 style="text-align: center" mat-dialog-title>New Employee </h1>
+<div mat-dialog-content style="margin-left: 5%;" [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+  <mat-form-field style="margin-left: 20px">
     <input matInput formControlName="id"
     placeholder="Employee ID">
   </mat-form-field>
   <mat-form-field style="margin-left: 20px">
-        <input matInput formControlName="name"
-        placeholder="Employee Name">
+        <input matInput formControlName="firstname"
+        placeholder="Employee First Name">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="lastname"
+  placeholder="Employee Last Name">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="personalPhoneNumber"
+  placeholder="Personal Phone Number">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="marketingPhoneNumber"
+  placeholder="Marketing Phone Number">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="personalEmail"
+  placeholder="Personal Email">
+</mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="marketingEmail"
+  placeholder="Marketing Email">
+  </mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="status" [matAutocomplete]="auto"
+  placeholder="Status">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of options" [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
+  </mat-form-field>
+<mat-form-field style="margin-left: 20px">
+  <input matInput formControlName="dateofBirth"
+  placeholder="Date of Birth">
 </mat-form-field>
 </div>
 <div class="button-row">
-    <button mat-raised-button style="margin-right: 20%" color="primary" type="submit" (click)="onSubmit()" [disabled]="service.form.invalid">Submit</button>
-    <button mat-raised-button color="warn" (click)="onNoClick()">Clear</button>
+    <button mat-raised-button style="width: 40%; margin-left: 7%; margin-top: 2%" color="primary" type="submit" (click)="onSubmit()" [disabled]="service.form.invalid">Submit</button>
+    <button mat-raised-button style="width: 40%; margin-left: 5%; margin-top: 2%" color="warn" (click)="onNoClick()">Cancel</button>
 </div>
