@@ -4,35 +4,35 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
-export interface SubmissionsItem {
-    rep: string;
-    vendor: string;
-    primeVendor: string;
-    client: string;
-    vendorPerson: string;
-    vendorContact: number;
-    primeVendorPerson: string;
-    primeVendorContact: number;
-    role: string;
-    status: string;
-    reasonOnDecision: string;
-    id: number;
+export interface TraineeItem {
+  firstname: string;
+  lastname: string;
+  personalPhoneNumber: number;
+  marketingPhoneNumber: number;
+  personalEmail: string;
+  marketingEmail: string;
+  status: string;
+  dateofBirth: string;
+  id: number;
 }
 
 // TODO: replace this with real data from your application
-export const EXAMPLE_DATA1: SubmissionsItem[] = [
-  {id: 1, rep: 'Darab', vendor: 'Kiyani', primeVendor: 'sda', client: 'dadf',
-  vendorPerson: 'dfa', vendorContact: 12341, primeVendorPerson: 'dasf', primeVendorContact: 1341,
-  role: 'adf', status: 'Ongoing', reasonOnDecision: 'adf' },
+export const EXAMPLE_DATA2: TraineeItem[] = [
+  {id: 1, firstname: 'Darab', lastname: 'Kiyani', personalPhoneNumber: 8607710436, marketingPhoneNumber: 86014123131, personalEmail:
+  'darab.kiyani@uconn.edu', marketingEmail: 'darabkiyani5@gmail.com', status: 'OPT', dateofBirth: '09/03/1990'},
+  {id: 2, firstname: 'Misbah', lastname: 'Aamer', personalPhoneNumber: 12311123232, marketingPhoneNumber: 12123121231,
+  personalEmail: 'maad@yahoo.com', marketingEmail: 'misbah@gmail.com', status: 'OPT', dateofBirth: '09/07/1989'},
+  {id: 3, firstname: 'Harris', lastname: 'Masood', personalPhoneNumber: 1231232112, marketingPhoneNumber: 12312312313,
+  personalEmail: 'harad@yahoo.com', marketingEmail: 'harris@gmail.com', status: 'Citizen', dateofBirth: '09/09/1970'},
 ];
 
 /**
- * Data source for the Submissions view. This class should
+ * Data source for the Trainee view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export default class SubmissionsDataSource extends DataSource<SubmissionsItem> {
-  data: SubmissionsItem[] = EXAMPLE_DATA1;
+export default class TraineeDataSource extends DataSource<TraineeItem> {
+  data: TraineeItem[] = EXAMPLE_DATA2;
   paginator: MatPaginator;
   sort: MatSort;
 
@@ -45,7 +45,7 @@ export default class SubmissionsDataSource extends DataSource<SubmissionsItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<SubmissionsItem[]> {
+  connect(): Observable<TraineeItem[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -69,7 +69,7 @@ export default class SubmissionsDataSource extends DataSource<SubmissionsItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: SubmissionsItem[]) {
+  private getPagedData(data: TraineeItem[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -78,7 +78,7 @@ export default class SubmissionsDataSource extends DataSource<SubmissionsItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: SubmissionsItem[]) {
+  private getSortedData(data: TraineeItem[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -86,17 +86,11 @@ export default class SubmissionsDataSource extends DataSource<SubmissionsItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'rep': return compare(a.rep, b.rep, isAsc);
-        case 'vendor': return compare(a.vendor, b.vendor, isAsc);
+        case 'firstname': return compare(a.firstname, b.firstname, isAsc);
+        case 'lastname': return compare(a.lastname, b.lastname, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
-        case 'primeVendor': return compare(a.primeVendor, b.primeVendor, isAsc);
-        case 'client': return compare(a.client, b.client, isAsc);
-        case 'vendorPerson': return compare(a.vendorPerson, b.vendorPerson, isAsc);
-        case 'vendorContact': return compare(+a.id, +b.id, isAsc);
-        case 'primeVendorPerson': return compare(a.primeVendorPerson, b.primeVendorPerson, isAsc);
-        case 'primeVendorContact': return compare(+a.id, +b.id, isAsc);
-        case 'role': return compare(a.role, b.role, isAsc);
-        case 'reasonOnDecision': return compare(a.reasonOnDecision, b.reasonOnDecision, isAsc);
+        case 'personalPhoneNumber': return compare(+a.id, +b.id, isAsc);
+        case 'personalEmail': return compare(a.personalEmail, b.personalEmail, isAsc);
         default: return 0;
       }
     });

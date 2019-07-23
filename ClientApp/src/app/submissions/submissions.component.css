@@ -42,11 +42,6 @@
     padding-left: 40px;
   }
   
-  th.mat-column-implementationPartnerVendor, td.mat-column-implementationPartnerVendor {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-  
   th.mat-column-vendorPerson, td.mat-column-vendorPerson {
     padding-right: 40px;
     padding-left: 40px;
@@ -77,27 +72,7 @@
     padding-left: 40px;
   }
   
-  th.mat-column-firstCommunication, td.mat-column-firstCommunication {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-
   th.mat-column-role, td.mat-column-role {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-  
-  th.mat-column-domain, td.mat-column-domain {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-  
-  th.mat-column-toolStack, td.mat-column-toolStack {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-  
-  th.mat-column-submissionAndProcess, td.mat-column-submissionAndProcess {
     padding-right: 40px;
     padding-left: 40px;
   }
@@ -107,10 +82,6 @@
     padding-left: 40px;
   }
 
-  th.mat-column-updates, td.mat-column-updates {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
 
   .mat-form-field{
     margin: 10px 50px -35px 0px;

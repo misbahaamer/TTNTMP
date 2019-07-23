@@ -20,6 +20,9 @@ import { EmployeeService } from './employees/employees.service';
 import { SubmissionsComponent } from './submissions/submissions.component';
 import { AddSubmissionsComponent } from './submissions/addsubmissions.component';
 import { SubmissionService } from './submissions/submissions.service';
+import { TraineeComponent } from './trainee/trainee.component';
+import { AddTraineeComponent } from './trainee/addtrainee.component';
+import { TraineeService } from './trainee/trainee.service';
 
 
 @NgModule({
@@ -33,6 +36,8 @@ import { SubmissionService } from './submissions/submissions.service';
     AddEmployeesComponent,
     SubmissionsComponent,
     AddSubmissionsComponent,
+    TraineeComponent,
+    AddTraineeComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,6 +49,7 @@ import { SubmissionService } from './submissions/submissions.service';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'employees', component: EmployeesComponent},
       { path: 'submissions', component: SubmissionsComponent},
+      { path: 'trainee', component: TraineeComponent},
     ]),
     LayoutModule,
     MatToolbarModule,
@@ -62,8 +68,8 @@ import { SubmissionService } from './submissions/submissions.service';
     MatAutocompleteModule,
     ReactiveFormsModule
   ],
-  providers: [EmployeeService, SubmissionService],
+  providers: [EmployeeService, SubmissionService, TraineeService],
   bootstrap: [AppComponent],
-  entryComponents: [AddEmployeesComponent, AddSubmissionsComponent]
+  entryComponents: [AddEmployeesComponent, AddSubmissionsComponent, AddTraineeComponent]
 })
 export class AppModule { }

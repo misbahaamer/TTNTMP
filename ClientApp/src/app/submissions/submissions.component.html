@@ -46,10 +46,12 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Client</th>
         <td mat-cell *matCellDef="let row">{{row.client}}</td>
       </ng-container>
+      <!--
       <ng-container matColumnDef="implementationPartnerVendor">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Implementaion Partner Vendor</th>
         <td mat-cell *matCellDef="let row">{{row.implementationPartnerVendor}}</td>
       </ng-container>
+    -->
       <ng-container matColumnDef="vendorPerson">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor Person</th>
         <td mat-cell *matCellDef="let row">{{row.vendorPerson}}</td>
@@ -66,14 +68,17 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Prime Vendor Contact</th>
         <td mat-cell *matCellDef="let row">{{row.primeVendorContact}}</td>
       </ng-container>
+      <!--
       <ng-container matColumnDef="firstCommunication">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>First Communication</th>
         <td mat-cell *matCellDef="let row">{{row.firstCommunication}}</td>
       </ng-container>
+    -->
       <ng-container matColumnDef="role">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
         <td mat-cell *matCellDef="let row">{{row.role}}</td>
       </ng-container>
+      <!--
       <ng-container matColumnDef="domain">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Domain</th>
         <td mat-cell *matCellDef="let row">{{row.domain}}</td>
@@ -86,6 +91,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Submission and Process</th>
         <td mat-cell *matCellDef="let row">{{row.submissionAndProcess}}</td>
       </ng-container>
+    -->
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
         <td mat-cell *matCellDef="let row">{{row.status}}</td>
@@ -94,10 +100,12 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Reason on Decision</th>
         <td mat-cell *matCellDef="let row">{{row.reasonOnDecision}}</td>
       </ng-container>
+      <!--
       <ng-container matColumnDef="updates">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Updates</th>
         <td mat-cell *matCellDef="let row">{{row.updates}}</td>
       </ng-container>
+    -->
       <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit</th>
           <td mat-cell *matCellDef="let row">
@@ -107,6 +115,7 @@
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      
       (click)="selection.toggle(row)"></tr>
       
     </table>

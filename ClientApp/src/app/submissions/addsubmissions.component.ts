@@ -8,7 +8,7 @@ import { SubmissionService } from './submissions.service';
 })
 
 export class AddSubmissionsComponent {
-    options: string[] = ['On Hold', 'Acceptance', 'Ongoing', 'Rejected'];
+    options: string[] = ['On Hold', 'Vendor passed', 'Ongoing', 'Rejected', 'Confirmed'];
     constructor(
         private service: SubmissionService,
         private dialogRef: MatDialogRef<AddSubmissionsComponent>) {}

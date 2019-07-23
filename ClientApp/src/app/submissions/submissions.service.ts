@@ -8,19 +8,13 @@ export class SubmissionService {
     vendor: new FormControl(),
     primeVendor: new FormControl('', Validators.required),
     client: new FormControl(),
-    implementationPartnerVendor: new FormControl(),
     vendorPerson: new FormControl(),
     vendorContact: new FormControl(),
     primeVendorPerson: new FormControl('', Validators.required),
     primeVendorContact: new FormControl('', Validators.required),
-    firstCommunication: new FormControl('', Validators.required),
     role: new FormControl('', Validators.required),
-    domain: new FormControl(),
-    toolStack: new FormControl('', Validators.required),
-    submissionAndProcess: new FormControl('', Validators.required),
     status: new FormControl('', [Validators.required, this.requireMatch]),
     reasonOnDecision: new FormControl(),
-    updates: new FormControl(),
     id: new FormControl('', Validators.required)
   });
 
@@ -30,19 +24,13 @@ initializeFormGroup() {
     vendor: '',
     primeVendor: '',
     client: '',
-    implementationPartnerVendor: '',
     vendorPerson: '',
     vendorContact: '',
     primeVendorPerson: '',
     primeVendorContact: '',
-    firstCommunication: '',
     role: '',
-    domain: '',
-    toolStack: '',
-    submissionAndProcess: '',
     status: '',
     reasonOnDecision: '',
-    updates: '',
     id: ''
     });
   }
@@ -53,7 +41,8 @@ initializeFormGroup() {
 
 requireMatch(control: FormControl): ValidationErrors | null {
     const selection: any = control.value;
-    if (!(selection === 'On Hold' || selection === 'Acceptance' || selection === 'Rejected' || selection === 'Ongoing')) {
+    if (!(selection === 'On Hold' || selection === 'Vendor passed' || selection === 'Rejected' ||
+    selection === 'Ongoing' || selection === 'Confirmed')) {
       return { requireMatch: true };
     }
     return null;

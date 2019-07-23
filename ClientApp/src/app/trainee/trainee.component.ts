@@ -1,48 +1,55 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTable, MatTableDataSource, MatDialog, MatDialogConfig } from '@angular/material';
-import { EXAMPLE_DATA1, SubmissionsItem } from './submissions-datasource';
+import { EXAMPLE_DATA2, TraineeItem } from './trainee-datasource';
 import { SelectionModel } from '@angular/cdk/collections';
-import { AddSubmissionsComponent } from './addsubmissions.component';
-import { SubmissionService } from './submissions.service';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { AddTraineeComponent } from './addtrainee.component';
+import { TraineeService } from './trainee.service';
+import { EXAMPLE_DATA, EmployeesItem } from '../employees/employees-datasource';
 
 @Component({
-  selector: 'app-submissions',
-  templateUrl: './submissions.component.html',
-  styleUrls: ['./submissions.component.css'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
+  selector: 'app-trainee',
+  templateUrl: './trainee.component.html',
+  styleUrls: ['./trainee.component.css']
 })
 
-export class SubmissionsComponent implements AfterViewInit {
+export class TraineeComponent implements AfterViewInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<SubmissionsItem>;
+  @ViewChild(MatTable, {static: false}) table: MatTable<TraineeItem>;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['select', 'id', 'rep', 'vendor', 'primeVendor', 'client', 'vendorPerson',
-   'vendorContact', 'primeVendorPerson', 'primeVendorContact', 'role',
-   'status', 'reasonOnDecision', 'actions'];
-  dataSource = new MatTableDataSource<SubmissionsItem>(EXAMPLE_DATA1);
-  selection = new SelectionModel<SubmissionsItem>(true, []);
-  expandedElement: SubmissionsItem | null;
+  displayedColumns = ['select', 'id', 'firstname', 'lastname', 'personalPhoneNumber',
+   'personalEmail', 'status', 'dateofBirth', 'actions'];
+  dataSource = new MatTableDataSource<TraineeItem>(EXAMPLE_DATA2);
+  selection = new SelectionModel<TraineeItem>(true, []);
+  employeedataSource = new MatTableDataSource<EmployeesItem>(EXAMPLE_DATA);
 
   removeSelectedRows() {
     this.selection.selected.forEach(item => {
        const index: number = this.dataSource.data.findIndex(d => d === item);
        console.log(this.dataSource.data.findIndex(d => d === item));
        this.dataSource.data.splice(index, 1);
-       this.dataSource = new MatTableDataSource<SubmissionsItem>(this.dataSource.data);
+       this.dataSource = new MatTableDataSource<TraineeItem>(this.dataSource.data);
       setTimeout(() => {
         this.ngAfterViewInit();
       });
      });
-     this.selection = new SelectionModel<SubmissionsItem>(true, []);
+     this.selection = new SelectionModel<TraineeItem>(true, []);
+  }
+
+  transferSelectedRowstoEmployees() {
+    this.selection.selected.forEach(item => {
+       const index: number = this.dataSource.data.findIndex(d => d === item);
+       console.log(this.dataSource.data.findIndex(d => d === item));
+       const array: any = this.dataSource.data.splice(index, 1);
+       EXAMPLE_DATA.push(array[0]);
+       console.log(this.employeedataSource.data);
+       this.dataSource = new MatTableDataSource<TraineeItem>(this.dataSource.data);
+      setTimeout(() => {
+        this.ngAfterViewInit();
+      });
+     });
+     this.selection = new SelectionModel<TraineeItem>(true, []);
   }
 
   applyFilter(filterValue: string) {
@@ -63,20 +70,22 @@ export class SubmissionsComponent implements AfterViewInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: SubmissionsItem): string {
+  checkboxLabel(row?: TraineeItem): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
-  constructor(private service: SubmissionService,
+  constructor(private service: TraineeService,
               public dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogconfig = new MatDialogConfig();
+    dialogconfig.width = '60%';
+    dialogconfig.height = '52%';
     dialogconfig.disableClose = true;
-    const dialogRef = this.dialog.open(AddSubmissionsComponent, dialogconfig);
+    const dialogRef = this.dialog.open(AddTraineeComponent, dialogconfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(this.service.form.value);
@@ -92,11 +101,13 @@ export class SubmissionsComponent implements AfterViewInit {
 
   onEdit(row) {
     this.service.populateForm(row);
-    this.selection = new SelectionModel<SubmissionsItem>(true, []);
+    this.selection = new SelectionModel<TraineeItem>(true, []);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    const dialogRef = this.dialog.open(AddSubmissionsComponent, dialogConfig);
+    dialogConfig.width = '60%';
+    dialogConfig.height = '52%';
+    const dialogRef = this.dialog.open(AddTraineeComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(this.service.form.value);
@@ -105,15 +116,15 @@ export class SubmissionsComponent implements AfterViewInit {
           const index: number = this.dataSource.data.findIndex(d => d === item);
           console.log(this.dataSource.data.findIndex(d => d === item));
           this.dataSource.data.splice(index, 1, this.service.form.value);
-          this.dataSource = new MatTableDataSource<SubmissionsItem>(this.dataSource.data);
+          this.dataSource = new MatTableDataSource<TraineeItem>(this.dataSource.data);
         });
       this.service.form.reset();
       setTimeout(() => {
         this.ngAfterViewInit();
       });
-      this.selection = new SelectionModel<SubmissionsItem>(true, []);
+      this.selection = new SelectionModel<TraineeItem>(true, []);
     }
-    this.selection = new SelectionModel<SubmissionsItem>(true, []);
+    this.selection = new SelectionModel<TraineeItem>(true, []);
     });
   }
 
